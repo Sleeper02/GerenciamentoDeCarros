@@ -29,4 +29,7 @@ public class CarroModel {
     @ManyToOne
     @JoinColumn(name = "marca_id", nullable = false)
     private MarcaModel marca;
+
+    @Column(name = "imgUrl")
+    private String imgUrl;
 }
