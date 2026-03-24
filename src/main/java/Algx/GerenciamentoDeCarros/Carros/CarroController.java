@@ -41,7 +41,7 @@ public class CarroController {
 
     @GetMapping("/listar/{id}")
     public ResponseEntity<?> listarCarroPorId(@PathVariable Long id){
-        if(carroService.listarCarroId(id) != nulll){
+        if(carroService.listarCarroId(id) != null){
             return ResponseEntity.status(HttpStatus.FOUND)
                     .body(carroService.listarCarroId(id));
         }else{
