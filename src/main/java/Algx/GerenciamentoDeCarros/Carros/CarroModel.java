@@ -1,5 +1,7 @@
 package Algx.GerenciamentoDeCarros.Carros;
 
+import Algx.GerenciamentoDeCarros.Clientes.ClienteDTO;
+import Algx.GerenciamentoDeCarros.Clientes.ClienteModel;
 import Algx.GerenciamentoDeCarros.Marca.MarcaModel;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -29,6 +31,10 @@ public class CarroModel {
     @ManyToOne
     @JoinColumn(name = "marca_id", nullable = false)
     private MarcaModel marca;
+
+    @OneToOne
+    @JoinColumn(name="cliente_id", nullable = true)
+    private ClienteModel cliente;
 
     @Column(name = "imgUrl")
     private String imgUrl;

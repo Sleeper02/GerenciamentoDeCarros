@@ -1,5 +1,6 @@
 package Algx.GerenciamentoDeCarros.Carros;
 
+import Algx.GerenciamentoDeCarros.Clientes.ClienteModel;
 import Algx.GerenciamentoDeCarros.Marca.MarcaModel;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -19,6 +20,7 @@ public class CarroDTO {
     @Size(min = 7, max = 7, message = "A placa deve ter exatamente 7 caracteres")
     private String placa;
     private MarcaModel marca;
+    private ClienteModel cliente;
     private String imgUrl;
 
 }
