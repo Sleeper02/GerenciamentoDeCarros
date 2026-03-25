@@ -11,7 +11,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class MarcaDTO {
+public class  MarcaDTO {
 
     private Long id;
     private String nome;

@@ -1,5 +1,6 @@
 package Algx.GerenciamentoDeCarros.Carros;
 
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +21,7 @@ public class CarroController {
     }
 
     @PostMapping("/criar")
-    public ResponseEntity<String> criarCarro(@RequestBody CarroDTO carroDTO){
+    public ResponseEntity<String> criarCarro(@Valid @RequestBody CarroDTO carroDTO){
         CarroDTO carro = carroService.criarCarro(carroDTO);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body("Carro " + carro.getMarca() + " " + carro.getModelo() + " criado com sucesso!");
@@ -31,22 +32,22 @@ public class CarroController {
         List<CarroDTO> carroDTOS = carroService.listarCarros();
 
         if(!carroDTOS.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.FOUND)
+            return ResponseEntity.status(HttpStatus.OK)
                     .body(carroDTOS);
         }else{
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body("Não há registros de carros salvos");
+                    .body("Não carroas registrados nos nossos registros");
         }
     }
 
     @GetMapping("/listar/{id}")
     public ResponseEntity<?> listarCarroPorId(@PathVariable Long id){
         if(carroService.listarCarroId(id) != null){
-            return ResponseEntity.status(HttpStatus.FOUND)
+            return ResponseEntity.status(HttpStatus.OK)
                     .body(carroService.listarCarroId(id));
         }else{
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body("Carro com id: " + id + " não encontrado nos registros");
+                    .body("Carro com id: " + id + " não encontrado nos nossos registros");
         }
     }
 
@@ -62,7 +63,7 @@ public class CarroController {
                     .body(resposta);
         }else{
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body("Id: " + id + " não encontrado nos registros");
+                    .body("Id: " + id + " não encontrado nos nossos registros");
         }
     }
 
@@ -73,10 +74,10 @@ public class CarroController {
             carroService.deletarCarroId(id);
 
             return ResponseEntity.status(HttpStatus.OK)
-                    .body("Carro" + carroDTO.getMarca() + " " + carroDTO.getModelo() + " " + carroDTO.getPlaca() + " deletado com sucesso");
+                    .body("Carro" + carroDTO.getMarca() + " " + carroDTO.getModelo() + " " + carroDTO.getPlaca() + " deletado com sucesso!");
         }else{
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body("Id: " + id + " não encontrado nos registros");
+                    .body("Id: " + id + " não encontrado nos nossos registros");
         }
     }
 

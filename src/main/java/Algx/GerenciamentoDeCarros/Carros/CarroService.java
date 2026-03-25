@@ -18,6 +18,10 @@ public class CarroService {
     }
 
     public CarroDTO criarCarro(CarroDTO carroDTO){
+
+        if (carroRepository.existsByPlaca(carroDTO.getPlaca())) {
+            throw new IllegalArgumentException("Erro: Esta placa já está cadastrada no sistema!");
+        }
         CarroModel carroModel = carroMapper.map(carroDTO);
         carroModel = carroRepository.save(carroModel);
 

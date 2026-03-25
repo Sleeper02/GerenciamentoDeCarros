@@ -23,7 +23,7 @@ public class CarroModel {
     @Column(name = "modelo")
     private String modelo;
 
-    @Column(name = "placa")
+    @Column(name = "placa", unique = true)
     private String placa;
 
     @ManyToOne
