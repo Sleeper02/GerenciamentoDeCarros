@@ -1,6 +1,8 @@
 package Algx.GerenciamentoDeCarros.Clientes;
 
 import Algx.GerenciamentoDeCarros.Carros.CarroModel;
+import jakarta.validation.constraints.Pattern;
+import org.hibernate.validator.constraints.br.CPF;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,8 +21,12 @@ public class ClienteDTO {
     @CPF(message = "O CPF digitado é inválido") // O Spring já tem um validador pronto
     private String CPF;
 
+    @NotBlank(message = "O email é obrigatório")
     private String email;
-    private Integer telefone;
+
+    @NotBlank(message = "O Telefone é obrigatório")
+    @Pattern(regexp = "^\\d{10,11}$", message = "O telefone deve conter apenas números e ter entre 10 e 11 dígitos (com DDD)")
+    private String telefone;
     private String endereco;
     private CarroModel carro;
 

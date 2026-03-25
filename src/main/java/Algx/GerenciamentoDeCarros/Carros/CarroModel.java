@@ -3,6 +3,7 @@ package Algx.GerenciamentoDeCarros.Carros;
 import Algx.GerenciamentoDeCarros.Clientes.ClienteDTO;
 import Algx.GerenciamentoDeCarros.Clientes.ClienteModel;
 import Algx.GerenciamentoDeCarros.Marca.MarcaModel;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -32,8 +33,8 @@ public class CarroModel {
     @JoinColumn(name = "marca_id", nullable = false)
     private MarcaModel marca;
 
-    @OneToOne
-    @JoinColumn(name="cliente_id", nullable = true)
+    @OneToOne(mappedBy = "carro") //// Aponta para o nome da variável lá na classe ClienteModel
+    @JsonIgnore
     private ClienteModel cliente;
 
     @Column(name = "imgUrl")

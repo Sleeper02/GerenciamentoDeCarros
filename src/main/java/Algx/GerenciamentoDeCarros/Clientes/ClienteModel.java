@@ -1,6 +1,7 @@
 package Algx.GerenciamentoDeCarros.Clientes;
 
 import Algx.GerenciamentoDeCarros.Carros.CarroModel;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,13 +30,14 @@ public class ClienteModel {
     private String email;
 
     @Column(name = "telefone")
-    private Integer telefone;
+    private String telefone;
 
     @Column(name = "endereco")
     private String endereco;
 
     @OneToOne
     @JoinColumn(name = "carro_id")
+    @JsonIgnore
     private CarroModel carro;
 
 }
