@@ -1,0 +1,26 @@
+<!--inserir doc4-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Adicionar Marca</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+<body>
+<h1>Adicionar Nova Marca</h1>
+<div class="form-container">
+    <div th:if="${mensagem}" class="mensagem" th:text="${mensagem}"></div>
+    <form th:action="@{/marca/ui/salvar}" th:object="${marca}" method="post">
+        <label for="nome">Nome</label>
+        <input type="text" name="nome" th:field="*{nome}">
+        <span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}" style="color: red; font-size: 12px; margin-bottom: 10px; display: block;"></span>
+
+
+
+        <button type="submit">Salvar</button>
+    </form>
+    <a th:href="@{/marca/ui/listar/all}">Voltar para a lista de Marcas</a>
+</div>
+
+</body>
+</html>

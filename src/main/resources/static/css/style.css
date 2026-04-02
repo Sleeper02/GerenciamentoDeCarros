@@ -1,0 +1,203 @@
+/* =========================================
+   Reset Básico e Fonte
+========================================= */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /* Fonte moderna e limpa, sem serifa */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f7f6; /* Fundo cinza bem clarinho */
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+h1 {
+    color: #2c3e50;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+/* =========================================
+   Container estilo "Cartão" (Card)
+========================================= */
+.form-container, .table-container {
+    background-color: #ffffff;
+    padding: 30px 40px;
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    width: 100%;
+    max-width: 500px; /* Largura máxima pro formulário não esticar demais */
+}
+
+/* Se for uma tabela, o card pode ser mais largo */
+.table-container {
+    max-width: 900px;
+}
+
+/* =========================================
+   Inputs e Labels do Formulário
+========================================= */
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #555;
+    font-size: 14px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+select {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 15px;
+    transition: border-color 0.3s ease;
+    background-color: #fafafa;
+}
+
+/* Efeito ao clicar no input (Foco azul) */
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+
+select:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+    background-color: #fff;
+}
+
+/* =========================================
+   Botões e Links
+========================================= */
+button[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #3498db; /* Azul moderno */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+}
+
+button[type="submit"]:hover {
+    background-color: #2980b9; /* Azul um pouco mais escuro ao passar o mouse */
+}
+
+a {
+    display: inline-block;
+    margin-top: 20px;
+    color: #3498db;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    width: 100%;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #2980b9;
+}
+
+/* =========================================
+   Mensagens de Alerta (Sucesso/Erro)
+========================================= */
+.mensagem {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    padding: 12px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 500;
+}
+
+/* =========================================
+   Tabelas (Para o seu listar/all)
+========================================= */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+table th, table td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+table th {
+    background-color: #3498db;
+    color: white;
+    font-weight: 600;
+}
+
+table tr:hover {
+    background-color: #f9f9f9; /* Destaca a linha ao passar o mouse */
+}
+
+/* =========================================
+   Ajuste para os Links lado a lado (Rodapé)
+========================================= */
+.link-container {
+    display: flex;
+    justify-content: center; /* Centraliza os dois links juntos */
+    gap: 40px; /* Dá um espaço de 40px entre um link e outro */
+    margin-top: 25px;
+    width: 100%;
+}
+
+.link-container a {
+    width: auto; /* Remove a regra de 100% de largura */
+    margin-top: 0; /* Remove a margem do topo */
+}
+
+/* =========================================
+   Ajuste para os links de Ação DENTRO da Tabela
+========================================= */
+table td a {
+    width: auto; /* Impede que o botão ocupe a coluna inteira */
+    display: inline-block;
+    margin-top: 0;
+    margin-right: 10px;
+}
+
+.btn-editar { color: #f39c12; }
+.btn-editar:hover { color: #e67e22; }
+
+.btn-deletar { color: #e74c3c; }
+.btn-deletar:hover { color: #c0392b; }
+
+/* =========================================
+   Estilos da Imagem na Tabela
+========================================= */
+.coluna-img {
+    text-align: center; /* Centraliza a palavra "Img" e a foto horizontalmente */
+    vertical-align: middle; /* Garante que a foto fique bem no meio da linha verticalmente */
+}
+
+.img-carro {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%; /* Deixa a imagem redondinha */
+    object-fit: cover; /* Impede que a foto fique espremida ou esticada */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Um sombreado super leve para dar destaque (opcional) */
+}

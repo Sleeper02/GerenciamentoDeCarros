@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Clientes</title>
+    <link th:href="@{/css/style.css(v=3)}" rel="stylesheet">
+</head>
+<body>
+<h1>Lista de Clientes</h1>
+
+<div class="table-container">
+
+    <div th:if="${Mensagem}" class="mensagem" th:text="${Mensagem}"></div>
+
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>email</th>
+            <th>Telefone</th>
+            <th>Endereço</th>
+            <th>Carro</th>
+            <th>Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="c : ${cliente}">
+            <td th:text="${c.id}"></td>
+            <td th:text="${c.nome}"></td>
+            <td th:text="${c.email}"></td>
+            <td th:text="${c.telefone}"></td>
+            <td th:text="${c.endereco}"></td>
+            <td th:text="${c.carro != null ? c.carro.modelo + ' (' + c.carro.placa + ')' : 'Sem Carro'}"></td>
+            <td>
+                <a class="btn-editar" th:href="@{/cliente/ui/alterar/{id}(id=${c.id})}">Editar</a>
+                <a class="btn-deletar" th:href="@{/cliente/ui/deletar/{id}(id=${c.id})}" >Deletar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="link-container">
+        <a th:href="@{/cliente/ui/criar}">+ Adicionar Novo Cliente</a>
+        <a th:href="@{/carro/ui/listar/all}">Ir para a lista de Carros</a>
+    </div>
+</div>
+</body>
+</html>

@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Table(name="tb_clientes")
@@ -38,6 +39,7 @@ public class ClienteModel {
     @OneToOne
     @JoinColumn(name = "carro_id")
     @JsonIgnore
+    @ToString.Exclude
     private CarroModel carro;
 
 }

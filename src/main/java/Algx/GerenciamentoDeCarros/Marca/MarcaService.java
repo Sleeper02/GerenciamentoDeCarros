@@ -1,6 +1,7 @@
 package Algx.GerenciamentoDeCarros.Marca;
 
 import Algx.GerenciamentoDeCarros.Carros.CarroModel;
+import Algx.GerenciamentoDeCarros.RegraNegocioException;
 import org.springframework.stereotype.Service;
 
 import java.awt.*;
@@ -19,6 +20,10 @@ public class MarcaService {
     }
 
     public MarcaDTO criarMarca(MarcaDTO marcaDTO){
+        if(marcaRepository.existsByNomeIgnoreCase(marcaDTO.getNome())){
+            throw new RegraNegocioException("nome", "Erro: Este nome já está cadastrado no sistema!");
+
+        }
         MarcaModel marcaModel = marcaMapper.map(marcaDTO);
         marcaModel = marcaRepository.save(marcaModel);
 
@@ -49,6 +54,9 @@ public class MarcaService {
         Optional<MarcaModel> marcaModel = marcaRepository.findById(id);
         if(marcaModel.isPresent()){
             MarcaModel marca = marcaModel.get();
+            if((!marca.getNome().equals(marcaDTO.getNome()) && marcaRepository.existsByNomeIgnoreCase(marcaDTO.getNome()))){
+                throw new RegraNegocioException("nome", "Erro: Este nome já está em uso!");
+            }
             marcaMapper.atualizarMarca(marcaDTO, marca);
             marca = marcaRepository.save(marca);
 

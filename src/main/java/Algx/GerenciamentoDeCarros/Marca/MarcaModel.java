@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.util.List;
 
@@ -26,5 +27,6 @@ public class MarcaModel {
     // Uma marca possui vários carros
     @OneToMany(mappedBy = "marca")
     @JsonIgnore
+    @ToString.Exclude
     private List<CarroModel> carros;
 }

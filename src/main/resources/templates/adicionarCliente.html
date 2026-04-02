@@ -1,0 +1,44 @@
+<!--inserir doc4-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Adicionar Cliente</title>
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+<body>
+<h1>Adicionar Novo Cliente</h1>
+<div class="form-container">
+    <div th:if="${mensagem}" class="mensagem" th:text="${mensagem}"></div>
+    <div th:if="${erroGlobal}" class="mensagem erro-db" style="background-color: #f8d7da; color: #721c24; border-color: #f5c6cb;" th:text="${erroGlobal}"></div>
+    <form th:action="@{/cliente/ui/salvar}" th:object="${cliente}" method="post">
+        <label for="nome">Nome</label>
+        <input type="text" name="modelo" th:field="*{nome}">
+        <label for="cpf">CPF</label>
+        <input type="text" name="cpf" th:field="*{CPF}">
+        <span th:if="${#fields.hasErrors('CPF')}" th:errors="*{CPF}" style="color: red; font-size: 12px; margin-bottom: 10px; display: block;"></span>
+        <label for="telefone">Telefone</label>
+        <input type="text" name="telefone" th:field="*{telefone}">
+        <label for="email">E-mail</label>
+        <input type="email" name="email" th:field="*{email}">
+        <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color: red; font-size: 12px; margin-bottom: 10px; display: block;"></span>
+        <label for="endereco">Endereço</label>
+        <input type="text" name="endereco" th:field="*{endereco}">
+        <label for="carro">Carro alugado</label>
+        <select name="carro" th:field="*{carro.id}">
+            <option value="">-- Selecione um carro --</option>
+            <option th:each="c : ${carro}"
+                    th:value="${c.id}"
+                    th:text="${c.modelo}"
+            >
+            </option>>
+        </select>
+        <span th:if="${#fields.hasErrors('carro')}" th:errors="*{carro}" style="color: red; font-size: 12px; margin-bottom: 10px; display: block;"></span>
+
+        <button type="submit">Salvar</button>
+    </form>
+    <a th:href="@{/cliente/ui/listar/all}">Voltar para a lista de Clientes</a>
+</div>
+
+</body>
+</html>

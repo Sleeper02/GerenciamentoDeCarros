@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Marcas</title>
+    <link th:href="@{/css/style.css(v=2)}" rel="stylesheet">
+</head>
+<body>
+<h1>Lista de Marcas</h1>
+
+<div class="table-container">
+
+    <div th:if="${Mensagem}" class="mensagem" th:text="${Mensagem}"></div>
+
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Carros</th>
+            <th>Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="m : ${marca}">
+            <td th:text="${m.id}"></td>
+            <td th:text="${m.nome}"></td>
+            <td>
+                <span th:if="${not #lists.isEmpty(m.carros)}">
+                    <div th:each="carro : ${m.carros}">
+                        <span th:text="${carro.modelo}"></span> - Placa: <span th:text="${carro.placa}"></span>
+                    </div>
+                </span>
+            </td>
+            <td>
+                <a class="btn-editar" th:href="@{/marca/ui/alterar/{id}(id=${m.id})}">Editar</a> |
+                <a class="btn-deletar" th:href="@{/marca/ui/deletar/{id}(id=${m.id})}">Deletar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee;">
+
+    <div class="link-container">
+        <a th:href="@{/marca/ui/criar}">+ Adicionar Nova Marca</a>
+        <a th:href="@{/carro/ui/listar/all}">Ir para a lista de Carros</a>
+    </div>
+
+</div>
+</body>
+</html>

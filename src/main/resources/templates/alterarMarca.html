@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Alterar Marca</title>
+    <link th:href="@{/css/style.css(v=2)}" rel="stylesheet">
+</head>
+<body>
+<h1>Alterar Marca</h1>
+<div class="form-container">
+    <div th:if="${mensagem}" class="mensagem" th:text="${mensagem}"></div>
+    <form th:action="@{/marca/ui/atualizar/{id}(id=${marca.id})}" th:object="${marca}" method="POST">
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" th:field="*{nome}" required/>
+        <span th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}" style="color: red; font-size: 12px; margin-bottom: 10px; display: block;"></span>
+
+        <button type="submit">Salvar</button>
+    </form>
+    <a th:href="@{/marca/ui/listar/all}">Voltar para a lista de Marcas</a>
+</div>
+</body>
+</html>

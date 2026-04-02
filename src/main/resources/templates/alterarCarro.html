@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>Alterar Carro</title>
+    <link th:href="@{/css/style.css(v=2)}" rel="stylesheet">
+</head>
+<body>
+<h1>Alterar Carro</h1>
+<div class="form-container">
+    <div th:if="${mensagem}" class="mensagem" th:text="${mensagem}"></div>
+    <form th:action="@{/carro/ui/atualizar/{id}(id=${carro.id})}" th:object="${carro}" method="POST">
+        <label for="modelo">Modelo:</label>
+        <input type="text" id="modelo" th:field="*{modelo}" required/>
+        <label for="placa">Placa:</label>
+        <input type="text" id="placa" th:field="*{placa}" required minlength="7" maxlength="7">
+        <span th:if="${#fields.hasErrors('placa')}" th:errors="*{placa}" style="color: red; font-size: 12px; margin-bottom: 10px; display: block;"></span>
+        <label for="marca">Marca</label>
+        <select id="marca" th:field="*{marca.id}"required>
+            <option value="">Selecione uma marca</option>
+            <option th:each="m : ${marca}"
+                    th:value="${m.id}"
+                    th:text="${m.nome}">
+            </option>
+        </select>
+
+        <label for="imgUrl">Imagem Url</label>
+        <input type="text" name="imgUrl" th:field="*{imgUrl}">
+
+        <button type="submit">Salvar</button>
+    </form>
+    <a th:href="@{/carro/ui/listar/all}">Voltar para a lista de Carro</a>
+</div>
+</body>
+</html>

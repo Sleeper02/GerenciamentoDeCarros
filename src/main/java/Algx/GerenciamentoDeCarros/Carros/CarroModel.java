@@ -8,6 +8,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Table(name = "tb_carros")
@@ -35,6 +36,7 @@ public class CarroModel {
 
     @OneToOne(mappedBy = "carro") //// Aponta para o nome da variável lá na classe ClienteModel
     @JsonIgnore
+    @ToString.Exclude
     private ClienteModel cliente;
 
     @Column(name = "imgUrl")
