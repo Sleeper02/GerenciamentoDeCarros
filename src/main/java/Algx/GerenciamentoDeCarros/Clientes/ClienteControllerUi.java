@@ -37,7 +37,7 @@ public class ClienteControllerUi {
     @PostMapping("/salvar")
     public String salvarCliente(@Valid @ModelAttribute("cliente") ClienteDTO clienteDTO, BindingResult result, Model model, RedirectAttributes redirectAttributes){
         if(result.hasErrors()){
-            model.addAttribute("carro", carroService.listarCarros());
+            model.addAttribute("carro", carroService.listarCarrosDisponiveis());
             return "adicionarCliente";
         }try{
             clienteService.criarCliente(clienteDTO);
@@ -45,7 +45,7 @@ public class ClienteControllerUi {
             return "redirect:/cliente/ui/listar/all";
         }catch (RegraNegocioException e){
             result.rejectValue(e.getCampo(), "error.cliente", e.getMessage());
-            model.addAttribute("carro", carroService.listarCarros());
+            model.addAttribute("carro", carroService.listarCarrosDisponiveis());
             return "adicionarCliente";
         }
     }

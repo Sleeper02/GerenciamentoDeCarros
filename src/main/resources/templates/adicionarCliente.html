@@ -19,6 +19,7 @@
         <span th:if="${#fields.hasErrors('CPF')}" th:errors="*{CPF}" style="color: red; font-size: 12px; margin-bottom: 10px; display: block;"></span>
         <label for="telefone">Telefone</label>
         <input type="text" name="telefone" th:field="*{telefone}">
+        <span th:if="${#fields.hasErrors('telefone')}" th:errors="*{telefone}" style="color: red; font-size: 12px; margin-bottom: 10px; display: block;"></span>
         <label for="email">E-mail</label>
         <input type="email" name="email" th:field="*{email}">
         <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color: red; font-size: 12px; margin-bottom: 10px; display: block;"></span>

@@ -34,7 +34,9 @@
 
             <td>
                 <a class="btn-editar" th:href="@{/carro/ui/alterar/{id}(id=${c.id})}">Editar</a> |
-                <a class="btn-deletar" th:href="@{/carro/ui/deletar/{id}(id=${c.id})}" >Deletar</a>
+                <a th:if="${c.cliente == null}" class="btn-deletar" th:href="@{/carro/ui/deletar/{id}(id=${c.id})}">Deletar</a>
+
+                <span th:unless="${c.cliente == null}" class="btn-deletar link-bloqueado" title="O carro precisa estar disponível para deletar" style="cursor: help;">Deletar</span>
             </td>
         </tr>
         </tbody>

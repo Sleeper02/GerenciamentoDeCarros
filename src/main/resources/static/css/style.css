@@ -186,6 +186,10 @@ table td a {
 .btn-deletar { color: #e74c3c; }
 .btn-deletar:hover { color: #c0392b; }
 
+/* Classe para inutilizar links */
+.link-bloqueado {
+    color: #b2bec3 !important;      /* Deixa o texto cinza claro */
+}
 /* =========================================
    Estilos da Imagem na Tabela
 ========================================= */
