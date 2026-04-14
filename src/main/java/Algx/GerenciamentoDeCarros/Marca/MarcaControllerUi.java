@@ -49,10 +49,10 @@ public class MarcaControllerUi {
         if(!marcaDTO.isEmpty()){
             model.addAttribute("marca", marcaDTO);
             return "listarMarca";
-        }else{
-            return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body("Não há marcas registradas");
         }
+        model.addAttribute("marca", marcaDTO);
+        return "listarMarca";
+
     }
 
 

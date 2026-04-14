@@ -56,10 +56,9 @@ public class ClienteControllerUi {
         if(!clienteDTO.isEmpty()){
             model.addAttribute("cliente", clienteDTO);
             return "listarCliente";
-        }else{
-            return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body("Não há clientes registrados");
         }
+        model.addAttribute("cliente", clienteDTO);
+        return "listarCliente";
     }
 
     @GetMapping("/listar/{id}")

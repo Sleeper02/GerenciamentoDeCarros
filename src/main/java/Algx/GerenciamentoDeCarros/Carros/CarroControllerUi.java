@@ -58,10 +58,9 @@ public class CarroControllerUi {
         if(!carroDTO.isEmpty()){
             model.addAttribute("carro", carroDTO);
             return "listarCarro";
-        }else{
-            return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body("Não há carros registrados");
         }
+        model.addAttribute("carro", carroDTO);
+        return "listarCarro";
     }
 
     @GetMapping("/listar/{id}")
